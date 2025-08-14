@@ -58,6 +58,47 @@ server.post('/courses', (request, reply) => {
   return reply.status(201).send({ courseId }) 
 })
 
+server.patch('/courses/:id', (request, reply) => {
+  type Params = {
+    id: string
+  }
+  type Body = {
+    title: string
+  }
+  const params = request.params as Params
+  const body = request.body as Body
+
+  const courseId = params.id
+  const courseTitle = body.title
+
+  const courseIndex = courses.findIndex(course => course.id === courseId)
+  if (courseIndex === -1) {
+    return reply.status(404).send({ courseId })
+  }
+  if (!courseTitle) {
+    return reply.status(400).send({ error: 'Title is required' })
+  }
+  courses[courseIndex].title = courseTitle
+  const updatedCourse = courses[courseIndex]
+  return reply.status(200).send({ updatedCourse })
+})
+
+server.delete('/courses/:id', (request, reply) => {
+  type Params = {
+    id: string
+  }
+
+  const params = request.params as Params
+  const courseId = params.id
+
+  const courseIndex = courses.findIndex(course => course.id === courseId)
+  if (courseIndex === -1) {
+    return reply.status(404).send()
+  }
+  courses.splice(courseIndex, 1)
+  return reply.status(200).send({ message: 'Course deleted successfully' })
+})
+
 server.listen({ port: 3333 }).then(() => {
   console.log('Server is running on http://localhost:3333')
 })

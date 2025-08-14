@@ -11,5 +11,16 @@ GET http://localhost:3333/courses
 
 ###
 
-GET http://localhost:3333/courses/eac4d267-cec0-42c8-91a7-1207260019f4
+GET http://localhost:3333/courses/16b910c1-e9ef-4440-927a-00f127113cb9
+
+###
+PATCH http://localhost:3333/courses/16b910c1-e9ef-4440-927a-00f127113cb9
+Content-Type: application/json
+
+{
+  "title": "Curso de Fastify atualizado"
+}
+
+###
+DELETE http://localhost:3333/courses/16b910c1-e9ef-4440-927a-00f127113cb9
 
