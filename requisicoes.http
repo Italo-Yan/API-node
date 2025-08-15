@@ -2,7 +2,7 @@ POST http://localhost:3333/courses
 Content-Type: application/json
 
 {
-  "title": "Curso de Fastify"
+  "title": "react native course"
 }
 
 ###
@@ -11,16 +11,16 @@ GET http://localhost:3333/courses
 
 ###
 
-GET http://localhost:3333/courses/16b910c1-e9ef-4440-927a-00f127113cb9
+GET http://localhost:3333/courses/10e5b7ab-e447-48b3-b05c-11b6aad8ceb7
 
 ###
-PATCH http://localhost:3333/courses/16b910c1-e9ef-4440-927a-00f127113cb9
+PATCH http://localhost:3333/courses/37ada17e-9903-4351-9465-8b757f6c2016
 Content-Type: application/json
 
 {
-  "title": "Curso de Fastify atualizado"
+  "title": "updated react native course"
 }
 
 ###
-DELETE http://localhost:3333/courses/16b910c1-e9ef-4440-927a-00f127113cb9
+DELETE http://localhost:3333/courses/4429fc59-b51d-4ee5-b007-d06c710a736b
 
