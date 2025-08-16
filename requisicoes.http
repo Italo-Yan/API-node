@@ -2,12 +2,12 @@ POST http://localhost:3333/courses
 Content-Type: application/json
 
 {
-  "title": "react native course"
+  "title": "react course"
 }
 
 ###
 
-GET http://localhost:3333/courses
+GET http://localhost:3333/courses?orderBy=title
 
 ###
 
