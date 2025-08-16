@@ -15,6 +15,20 @@
       "when": 1755217799246,
       "tag": "0001_orange_ultimo",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1755374260835,
+      "tag": "0002_sturdy_lightspeed",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1755374365486,
+      "tag": "0003_fast_kinsey_walden",
+      "breakpoints": true
     }
   ]
 }
