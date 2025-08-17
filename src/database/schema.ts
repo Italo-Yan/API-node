@@ -1,5 +1,4 @@
-import { timestamp } from 'drizzle-orm/pg-core';
-import { pgTable, uuid, text } from 'drizzle-orm/pg-core';
+import { pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
 
 export const users = pgTable('users', {
   id: uuid().primaryKey().defaultRandom(),
@@ -14,7 +13,11 @@ export const courses = pgTable('courses', {
 })
 
 export const enrollments = pgTable('enrollments', {
-  userId: uuid().notNull().references(() => users.id),
-  courseId: uuid().notNull().references(() => courses.id),
-  createdAt: timestamp({ withTimezone: true  }).notNull().defaultNow(),
+  userId: uuid()
+    .notNull()
+    .references(() => users.id),
+  courseId: uuid()
+    .notNull()
+    .references(() => courses.id),
+  createdAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
 })
