@@ -1,16 +1,21 @@
 import { fastifySwagger } from '@fastify/swagger'
-import fastify from 'fastify'
-import { validatorCompiler, serializerCompiler, type ZodTypeProvider, jsonSchemaTransform } from 'fastify-type-provider-zod'
-import { createCoursesRoute } from './src/routes/create-course.ts'
-import { getCoursesRoute } from './src/routes/get-course.ts'
-import { getCoursesByIdRoute } from './src/routes/get-course-by-id.ts'
-import { patchCoursesRoute } from './src/routes/patch-course.ts'
-import { deleteCoursesByIdRoute } from './src/routes/delete-course-by-id.ts'
 import scalarAPIReference from '@scalar/fastify-api-reference'
+import fastify from 'fastify'
+import {
+  jsonSchemaTransform,
+  serializerCompiler,
+  validatorCompiler,
+  type ZodTypeProvider,
+} from 'fastify-type-provider-zod'
+import { createCoursesRoute } from './routes/create-course.ts'
+import { deleteCoursesByIdRoute } from './routes/delete-course-by-id.ts'
+import { getCoursesRoute } from './routes/get-course.ts'
+import { getCoursesByIdRoute } from './routes/get-course-by-id.ts'
+import { patchCoursesRoute } from './routes/patch-course.ts'
 
 const server = fastify({
   logger: {
-      transport: {
+    transport: {
       target: 'pino-pretty',
       options: {
         translateTime: 'HH:MM:ss Z',
@@ -30,7 +35,7 @@ if (process.env.NODE_ENV === 'development') {
     },
     transform: jsonSchemaTransform,
   })
-  
+
   server.register(scalarAPIReference, {
     routePrefix: '/docs',
   })
@@ -45,6 +50,4 @@ server.register(getCoursesRoute)
 server.register(patchCoursesRoute)
 server.register(deleteCoursesByIdRoute)
 
-server.listen({ port: 3333 }).then(() => {
-  console.log('Server is running on http://localhost:3333')
-})
+export { server }

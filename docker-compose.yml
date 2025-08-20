@@ -9,4 +9,6 @@ services:
       POSTGRES_DB: desafio
     ports:
       - "5432:5432"
+    volumes:
+      - ./docker/setup.SQL:/docker-entrypoint-initdb.d/init.sql
 
